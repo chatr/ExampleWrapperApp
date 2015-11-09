@@ -1,0 +1,19 @@
+{
+  "resources": {
+    "head": [
+      {
+        "type": "script",
+        "src": "head.js"
+      }
+    ]
+  },
+  "options": {
+    "properties": {
+      "customerId": {
+        "title": "Customer ID",
+        "description": "Enter the ID provided to you by Photon Photos",
+        "type": "string"
+      }
+    }
+  }
+}
