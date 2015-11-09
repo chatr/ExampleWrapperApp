@@ -3,7 +3,7 @@
     "head": [
       {
         "type": "script",
-        "src": "head.js"
+        "src": "app.js"
       }
     ]
   },
