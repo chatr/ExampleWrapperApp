@@ -1,14 +1,14 @@
-# Eager Wrapper Example App
+# Cloudflare Apps Wrapper Example
 
-This is an example app for [Eager](https://eager.io).
+This is an example app for [Cloudflare Apps](https://cloudflare.com/apps).
 
-This app inserts an embed code from ‘Photon Photos’ a slightly less-than-real
-SaaS provider.  To make the app your own, download this project to your computer, and open the folder
-in the [App Tester](https://eager.io/developer/app-tester).  Then update the embed in app.js
-to what your service needs.
+The app modifies the background color of websites in an amusing, if useless,
+way.  To try it out download this project to your computer, and open the folder
+in the [App Creation Tool](http://cloudflare.com/apps/developer/upload-an-app).
 
-For more information about Eager and developing
-apps, please visit the [developer docs](https://eager.io/developer/docs).
+It is an example of an app which doesn’t add any UI to the page, but instead just
+adds some JavaScript and CSS.  For more information about Eager and developing
+apps, please visit the [developer docs](http://cloudflare.com/apps/developer/docs/).
 
-As always, you can contact us at [developer-help@eager.io](mailto:developer-help@eager.io)
+As always, you can contact us at [app-developer-help@cloudflare.com](mailto:app-developer-help@cloudflare.com)
 with any questions or concerns.
