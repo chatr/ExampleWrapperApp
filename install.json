@@ -65,12 +65,14 @@
                         "default": "#ffffff",
                         "format": "color",
                         "title": "Button Text / Icon Color",
+                        "description": "Leave empty for colors set in Chatra dashboard",
                         "type": "string"
                     },
                     "bgColor": {
                         "default": "#0d8bcd",
                         "format": "color",
                         "title": "Button Background Color",
+                        "description": "Leave empty for colors set in Chatra dashboard",
                         "type": "string"
                     }
                 }
@@ -84,7 +86,7 @@
                         "type": "integer",
                         "format": "slider",
                         "default": 340,
-                        "minimum": 200,
+                        "minimum": 250,
                         "maximum": 500,
                         "step": 1
                     },
@@ -96,6 +98,112 @@
                         "minimum": 350,
                         "maximum": 600,
                         "step": 1
+                    },
+                    "bgColor": {
+                        "default": "#fbfafd",
+                        "format": "color",
+                        "title": "Window Background Color",
+                        "description": "Please use ligh color for the background :–)",
+                        "type": "string"
+                    },
+                    "clientBubbleBg": {
+                        "default": "#d4f2fc",
+                        "format": "color",
+                        "title": "Visitor’s Message Bubble Color",
+                        "type": "string"
+                    },
+                    "agentBubbleBg": {
+                        "default": "#f1f0f3",
+                        "format": "color",
+                        "title": "Agent’s Message Bubble Color",
+                        "type": "string"
+                    }
+                }
+            },
+            "advanced": {
+                "title": "Advanced Options",
+                "type": "object",
+                "properties": {
+                    "enabled": {
+                      "title": "Show Advanced Options",
+                      "type": "boolean"
+                    },
+                    "language": {
+                        "title": "Widget Language",
+                        "type": "string",
+                        "enum": ["", "en", "de", "fr", "es", "nl", "ru"],
+                        "enumNames": {
+                            "": "Use language settings from Chatra",
+                            "en": "English",
+                            "de": "German",
+                            "fr": "French",
+                            "es": "Spanish",
+                            "nl": "Dutch",
+                            "ru": "Russian"
+                        },
+                        "default": "",
+                        "showIf": {
+                            "advanced.enabled": true
+                        }
+                    },
+                    "devices": {
+                        "title": "Allowed Devices",
+                        "type": "string",
+                        "enum": ["all", "mob", "notMob"],
+                        "enumNames": {
+                            "all": "Show the widget on all devices",
+                            "mob": "Only show the widget on mobile devices",
+                            "notMob": "Disable the widget on mobile devices"
+                        },
+                        "default": "all",
+                        "showIf": {
+                            "advanced.enabled": true
+                        }
+                    },
+                    "zIndex": {
+                        "title": "Z-index of the widget",
+                        "description": "Increase this value if the widget is obstructed by other elements of the page",
+                        "type": "integer",
+                        "default": 9999,
+                        "placeholder": 9999,
+                        "showIf": {
+                            "advanced.enabled": true
+                        }
+                    },
+                    "groupId": {
+                        "title": "Agent Group ID",
+                        "description": "Assign visitors to a specific <a href=\"https://app.chatra.io/settings/groups\">group of agents</a>",
+                        "type": "string",
+                        "showIf": {
+                            "advanced.enabled": true
+                        }
+                    },
+                    "inject": {
+                        "title": "Embed the widget into the page",
+                        "type": "boolean",
+                        "showIf": {
+                            "advanced.enabled": true
+                        }
+                    },
+                    "injectTo": {
+                        "title": "Embed location",
+                        "type": "string",
+                        "format": "selector",
+                        "showIf": {
+                            "advanced.enabled": true,
+                            "advanced.inject": true
+                        }
+                    },
+                    "injectHeight": {
+                        "title": "Height of the embedded widget",
+                        "type": "integer",
+                        "default": 500,
+                        "minimum": 350,
+                        "maximum": 900,
+                        "showIf": {
+                            "advanced.enabled": true,
+                            "advanced.inject": true
+                        }
                     }
                 }
             }
