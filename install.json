@@ -1,19 +1,112 @@
 {
-  "resources": {
-    "head": [
-      {
-        "type": "script",
-        "src": "app.js"
-      }
-    ]
-  },
-  "options": {
-    "properties": {
-      "customerId": {
-        "title": "Customer ID",
-        "description": "Enter the ID provided to you by Photon Photos",
-        "type": "string"
-      }
+    "resources": {
+        "head": [
+            {
+                "type": "script",
+                "src": "app.js"
+            }
+        ]
+    },
+    "options": {
+        "properties": {
+            "chatraId": {
+                "title": "Chatra ID",
+                "description": "Enter the ID provided to you by Chatra",
+                "type": "string"
+            },
+            "button": {
+                "title": "Chat Button",
+                "type": "object",
+                "properties": {
+                    "position": {
+                        "title": "Button Position",
+                        "type": "string",
+                        "enum": ["bl", "bc", "br", "lt", "lm", "lb", "rt", "rm", "rb"],
+                        "enumNames": {
+                            "bl": "At the bottom, on the Left",
+                            "bc": "At the bottom, in the middle",
+                            "br": "At the bottom, on the right",
+                            "lt": "Left side, at the top",
+                            "lm": "Left side, in the middle",
+                            "lb": "Left side, at the bottom",
+                            "rt": "Right side, at the top",
+                            "rm": "Right side, in the middle",
+                            "rb": "Right side, at the bottom"
+                        },
+                        "default": "br"
+                    },
+                    "style": {
+                        "default": "tab",
+                        "format": "radios",
+                        "title": "Button Style",
+                        "type": "string",
+                        "enum": [
+                            "tab",
+                            "round"
+                        ],
+                        "enumNames": {
+                            "tab": "Tab",
+                            "round": "Round"
+                        }
+                    },
+                    "size": {
+                        "title": "Button Size",
+                        "type": "integer",
+                        "format": "slider",
+                        "default": 60,
+                        "minimum": 40,
+                        "maximum": 100,
+                        "step": 1,
+                        "showIf": {
+                            "button.style": "round"
+                        }
+                    },
+                    "textColor": {
+                        "default": "#ffffff",
+                        "format": "color",
+                        "title": "Button Text / Icon Color",
+                        "type": "string"
+                    },
+                    "bgColor": {
+                        "default": "#0d8bcd",
+                        "format": "color",
+                        "title": "Button Background Color",
+                        "type": "string"
+                    }
+                }
+            },
+            "window": {
+                "title": "Chat Window",
+                "type": "object",
+                "properties": {
+                    "width": {
+                        "title": "Window Width",
+                        "type": "integer",
+                        "format": "slider",
+                        "default": 340,
+                        "minimum": 200,
+                        "maximum": 500,
+                        "step": 1
+                    },
+                    "height": {
+                        "title": "Window Height",
+                        "type": "integer",
+                        "format": "slider",
+                        "default": 480,
+                        "minimum": 350,
+                        "maximum": 600,
+                        "step": 1
+                    }
+                }
+            }
+        }
+    },
+    "preview": {
+        "handlers": [
+            {
+                "options": ["*"],
+                "execute": "if (window.CFChatraSetOptions) CFChatraSetOptions(INSTALL_OPTIONS)"
+            }
+        ]
     }
-  }
 }
