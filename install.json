@@ -9,16 +9,26 @@
     },
     "options": {
         "properties": {
-            "chatraId": {
-                "title": "Chatra ID",
-                "description": "Enter the ID provided to you by Chatra",
-                "type": "string"
+            "account": {
+                "order": 1,
+                "title": "Chatra Account",
+                "type": "object",
+                "format": "account",
+                "services": ["chatra"]
             },
             "button": {
+                "order": 2,
+                "showIf": {
+                    "account.service": {
+                        "op": "!=",
+                        "value": null
+                    }
+                },
                 "title": "Chat Button",
                 "type": "object",
                 "properties": {
                     "position": {
+                        "order": 1,
                         "title": "Button Position",
                         "type": "string",
                         "enum": ["bl", "bc", "br", "lt", "lm", "lb", "rt", "rm", "rb"],
@@ -26,16 +36,20 @@
                             "bl": "At the bottom, on the Left",
                             "bc": "At the bottom, in the middle",
                             "br": "At the bottom, on the right",
-                            "lt": "Left side, at the top",
-                            "lm": "Left side, in the middle",
-                            "lb": "Left side, at the bottom",
-                            "rt": "Right side, at the top",
-                            "rm": "Right side, in the middle",
-                            "rb": "Right side, at the bottom"
+                            "lt": "On the left side, at the top",
+                            "lm": "On the left side, in the middle",
+                            "lb": "On the left side, at the bottom",
+                            "rt": "On the right side, at the top",
+                            "rm": "On the right side, in the middle",
+                            "rb": "On the right side, at the bottom"
                         },
-                        "default": "br"
+                        "default": "br",
+                        "showIf": {
+                            "button.useChatraSettings": false
+                        }
                     },
                     "style": {
+                        "order": 2,
                         "default": "tab",
                         "format": "radios",
                         "title": "Button Style",
@@ -47,9 +61,13 @@
                         "enumNames": {
                             "tab": "Tab",
                             "round": "Round"
+                        },
+                        "showIf": {
+                            "button.useChatraSettings": false
                         }
                     },
                     "size": {
+                        "order": 3,
                         "title": "Button Size",
                         "type": "integer",
                         "format": "slider",
@@ -58,39 +76,60 @@
                         "maximum": 100,
                         "step": 1,
                         "showIf": {
-                            "button.style": "round"
+                            "button.style": "round",
+                            "button.useChatraSettings": false
                         }
                     },
                     "textColor": {
+                        "order": 4,
                         "default": "#ffffff",
                         "format": "color",
                         "title": "Button Text / Icon Color",
-                        "description": "Leave empty for colors set in Chatra dashboard",
-                        "type": "string"
+                        "type": "string",
+                        "showIf": {
+                            "button.useChatraSettings": false
+                        }
                     },
                     "bgColor": {
+                        "order": 5,
                         "default": "#0d8bcd",
                         "format": "color",
                         "title": "Button Background Color",
-                        "description": "Leave empty for colors set in Chatra dashboard",
-                        "type": "string"
+                        "type": "string",
+                        "showIf": {
+                            "button.useChatraSettings": false
+                        }
+                    },
+                    "useChatraSettings": {
+                        "order": 6,
+                        "title": "Use Chat Button settings from <a href=\"https://app.chatra.io/settings/general\" target=\"_blank\">Chatra Dashboard</a> instead",
+                        "type": "boolean"
                     }
                 }
             },
             "window": {
+                "order": 3,
+                "showIf": {
+                    "account.service": {
+                        "op": "!=",
+                        "value": null
+                    }
+                },
                 "title": "Chat Window",
                 "type": "object",
                 "properties": {
                     "width": {
+                        "order": 1,
                         "title": "Window Width",
                         "type": "integer",
                         "format": "slider",
                         "default": 340,
-                        "minimum": 250,
+                        "minimum": 275,
                         "maximum": 500,
                         "step": 1
                     },
                     "height": {
+                        "order": 2,
                         "title": "Window Height",
                         "type": "integer",
                         "format": "slider",
@@ -100,19 +139,27 @@
                         "step": 1
                     },
                     "bgColor": {
+                        "order": 3,
                         "default": "#fbfafd",
                         "format": "color",
                         "title": "Window Background Color",
                         "description": "Please use ligh color for the background :–)",
                         "type": "string"
                     },
+                    "bubbleColorsTip": {
+                        "order": 4,
+                        "type": "help",
+                        "helpvalue": "Try sending yourself a message to check these:"
+                    },
                     "clientBubbleBg": {
+                        "order": 5,
                         "default": "#d4f2fc",
                         "format": "color",
                         "title": "Visitor’s Message Bubble Color",
                         "type": "string"
                     },
                     "agentBubbleBg": {
+                        "order": 6,
                         "default": "#f1f0f3",
                         "format": "color",
                         "title": "Agent’s Message Bubble Color",
@@ -121,19 +168,28 @@
                 }
             },
             "advanced": {
+                "order": 4,
+                "showIf": {
+                    "account.service": {
+                        "op": "!=",
+                        "value": null
+                    }
+                },
                 "title": "Advanced Options",
                 "type": "object",
                 "properties": {
                     "enabled": {
-                      "title": "Show Advanced Options",
-                      "type": "boolean"
+                        "order": 1,
+                        "title": "Show Advanced Options",
+                        "type": "boolean"
                     },
                     "language": {
+                        "order": 2,
                         "title": "Widget Language",
                         "type": "string",
                         "enum": ["", "en", "de", "fr", "es", "nl", "ru"],
                         "enumNames": {
-                            "": "Use language settings from Chatra",
+                            "": "Use language settings from Chatra Dashboard",
                             "en": "English",
                             "de": "German",
                             "fr": "French",
@@ -147,7 +203,9 @@
                         }
                     },
                     "devices": {
-                        "title": "Allowed Devices",
+                        "order": 3,
+                        "title": "Devices",
+                        "format": "radios",
                         "type": "string",
                         "enum": ["all", "mob", "notMob"],
                         "enumNames": {
@@ -161,8 +219,9 @@
                         }
                     },
                     "zIndex": {
+                        "order": 4,
                         "title": "Z-index of the widget",
-                        "description": "Increase this value if the widget is obstructed by other elements of the page",
+                        "description": "Increase this value if other elements overlap the widget",
                         "type": "integer",
                         "default": 9999,
                         "placeholder": 9999,
@@ -171,41 +230,26 @@
                         }
                     },
                     "groupId": {
+                        "order": 5,
                         "title": "Agent Group ID",
-                        "description": "Assign visitors to a specific <a href=\"https://app.chatra.io/settings/groups\">group of agents</a>",
+                        "description": "Assign visitors to a specific <a href=\"https://app.chatra.io/settings/groups\" target=\"_blank\">group of agents</a>",
                         "type": "string",
                         "showIf": {
                             "advanced.enabled": true
-                        }
-                    },
-                    "inject": {
-                        "title": "Embed the widget into the page",
-                        "type": "boolean",
-                        "showIf": {
-                            "advanced.enabled": true
-                        }
-                    },
-                    "injectTo": {
-                        "title": "Embed location",
-                        "type": "string",
-                        "format": "selector",
-                        "showIf": {
-                            "advanced.enabled": true,
-                            "advanced.inject": true
-                        }
-                    },
-                    "injectHeight": {
-                        "title": "Height of the embedded widget",
-                        "type": "integer",
-                        "default": 500,
-                        "minimum": 350,
-                        "maximum": 900,
-                        "showIf": {
-                            "advanced.enabled": true,
-                            "advanced.inject": true
                         }
                     }
                 }
+            },
+            "settingsTip": {
+                "order": 5,
+                "showIf": {
+                    "account.service": {
+                        "op": "!=",
+                        "value": null
+                    }
+                },
+                "type": "help",
+                "helpvalue": "Looking for more options? Check out your <a href=\"https://app.chatra.io/settings/general\" target=\"_blank\">Chatra Settings</a>"
             }
         }
     },
