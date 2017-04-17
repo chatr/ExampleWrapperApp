@@ -143,7 +143,6 @@
                         "default": "#fbfafd",
                         "format": "color",
                         "title": "Window Background Color",
-                        "description": "Please use ligh color for the background :–)",
                         "type": "string"
                     },
                     "bubbleColorsTip": {
