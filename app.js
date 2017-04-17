@@ -101,7 +101,7 @@
             if (win.ChatraSetup.zIndex != newChatraSetup.zIndex)
                 Chatra('setZIndex', newChatraSetup.zIndex);
             if (win.ChatraSetup.groupId != newChatraSetup.groupId)
-                Chatra('setGroupId', newChatraSetup.groupId);
+                Chatra('setGroupId', newChatraSetup.groupId? newChatraSetup.groupId: null);
 
             if (
                 win.ChatraSetup.colors.buttonText != newChatraSetup.colors.buttonText ||
