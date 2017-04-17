@@ -33,15 +33,15 @@
                         "type": "string",
                         "enum": ["bl", "bc", "br", "lt", "lm", "lb", "rt", "rm", "rb"],
                         "enumNames": {
-                            "bl": "At the bottom, on the Left",
-                            "bc": "At the bottom, in the middle",
-                            "br": "At the bottom, on the right",
-                            "lt": "On the left side, at the top",
-                            "lm": "On the left side, in the middle",
-                            "lb": "On the left side, at the bottom",
-                            "rt": "On the right side, at the top",
-                            "rm": "On the right side, in the middle",
-                            "rb": "On the right side, at the bottom"
+                            "bl": "Bottom Left",
+                            "bc": "Bottom Middle",
+                            "br": "Bottom Right",
+                            "lt": "Left Top",
+                            "lm": "Left Middle",
+                            "lb": "Left Bottom",
+                            "rt": "Right Top",
+                            "rm": "Right Middle",
+                            "rb": "Right Bottom"
                         },
                         "default": "br",
                         "showIf": {
