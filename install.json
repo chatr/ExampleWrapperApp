@@ -256,7 +256,7 @@
         "handlers": [
             {
                 "options": ["*"],
-                "execute": "if (window.CFChatraSetOptions) CFChatraSetOptions(INSTALL_OPTIONS)"
+                "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
             }
         ]
     }

@@ -1,4 +1,4 @@
-(function(doc, win) {
+(function() {
     function convertOptions(options) {
         console.info(options);
 
@@ -34,45 +34,45 @@
     }
 
     function initialize(options) {
-        win.ChatraSetup = convertOptions(options);
+        window.ChatraSetup = convertOptions(options);
 
-        win.ChatraID = options.account && options.account.userId;
+        window.ChatraID = options.account && options.account.userId;
+        window.ChatraProtocol = 'https:';
 
-        var s = doc.createElement('script');
-        win.Chatra = win.Chatra || function() {
-            (win.Chatra.q = win.Chatra.q || []).push(arguments);
+        var s = document.createElement('script');
+        window.Chatra = window.Chatra || function() {
+            (window.Chatra.q = window.Chatra.q || []).push(arguments);
         };
         s.async = true;
-        s.src = (doc.location.protocol === 'https:' ? 'https:': 'http:')
-        + '//call.chatra.io/chatra.js';
-        if (doc.head) doc.head.appendChild(s);
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (document.head) document.head.appendChild(s);
     }
 
-    win.CFChatraSetOptions = function(options) {
+    window.INSTALL_SCOPE.setOptions = function(options) {
         var newChatraSetup = convertOptions(options);
 
         console.info(newChatraSetup);
 
-        if (!options.account || options.account.userId != win.ChatraID) {
-            win.ChatraID = options.account && options.account.userId;
-            win.ChatraSetup = newChatraSetup;
+        if (!options.account || options.account.userId != window.ChatraID) {
+            window.ChatraID = options.account && options.account.userId;
+            window.ChatraSetup = newChatraSetup;
             Chatra('restart');
         }
         else if (
-            win.ChatraSetup.buttonStyle != newChatraSetup.buttonStyle
+            window.ChatraSetup.buttonStyle != newChatraSetup.buttonStyle
         ) {
-            win.ChatraSetup = newChatraSetup;
+            window.ChatraSetup = newChatraSetup;
             Chatra('restart');
             Chatra('minimizeWidget');
         }
         else if (
-            win.ChatraSetup.mobileOnly != newChatraSetup.mobileOnly ||
-            win.ChatraSetup.disabledOnMobile != newChatraSetup.disabledOnMobile ||
-            win.ChatraSetup.language != newChatraSetup.language
+            window.ChatraSetup.mobileOnly != newChatraSetup.mobileOnly ||
+            window.ChatraSetup.disabledOnMobile != newChatraSetup.disabledOnMobile ||
+            window.ChatraSetup.language != newChatraSetup.language
         ) {
             var isExpanded = Chatra._chatExpanded;
 
-            win.ChatraSetup = newChatraSetup;
+            window.ChatraSetup = newChatraSetup;
             Chatra('restart');
             if (isExpanded) Chatra('expandWidget');
         }
@@ -80,40 +80,40 @@
             var chatButtonChanged = false;
             var chatWindowChanged = false;
 
-            if (win.ChatraSetup.buttonSize != newChatraSetup.buttonSize) {
+            if (window.ChatraSetup.buttonSize != newChatraSetup.buttonSize) {
                 Chatra('setButtonSize', newChatraSetup.buttonSize);
                 chatButtonChanged = true;
             }
-            if (win.ChatraSetup.buttonPosition != newChatraSetup.buttonPosition) {
+            if (window.ChatraSetup.buttonPosition != newChatraSetup.buttonPosition) {
                 Chatra('setButtonPosition', newChatraSetup.buttonPosition);
                 chatButtonChanged = true;
             }
 
-            if (win.ChatraSetup.chatWidth != newChatraSetup.chatWidth) {
+            if (window.ChatraSetup.chatWidth != newChatraSetup.chatWidth) {
                 Chatra('setChatWidth', newChatraSetup.chatWidth);
                 chatWindowChanged = true;
             }
-            if (win.ChatraSetup.chatHeight != newChatraSetup.chatHeight) {
+            if (window.ChatraSetup.chatHeight != newChatraSetup.chatHeight) {
                 Chatra('setChatHeight', newChatraSetup.chatHeight);
                 chatWindowChanged = true;
             }
 
-            if (win.ChatraSetup.zIndex != newChatraSetup.zIndex)
+            if (window.ChatraSetup.zIndex != newChatraSetup.zIndex)
                 Chatra('setZIndex', newChatraSetup.zIndex);
-            if (win.ChatraSetup.groupId != newChatraSetup.groupId)
+            if (window.ChatraSetup.groupId != newChatraSetup.groupId)
                 Chatra('setGroupId', newChatraSetup.groupId? newChatraSetup.groupId: null);
 
             if (
-                win.ChatraSetup.colors.buttonText != newChatraSetup.colors.buttonText ||
-                win.ChatraSetup.colors.buttonBg != newChatraSetup.colors.buttonBg
+                window.ChatraSetup.colors.buttonText != newChatraSetup.colors.buttonText ||
+                window.ChatraSetup.colors.buttonBg != newChatraSetup.colors.buttonBg
             ) {
                 Chatra('setColors', newChatraSetup.colors);
                 chatButtonChanged = true;
             }
             else if (
-                win.ChatraSetup.colors.chatBg != newChatraSetup.colors.chatBg ||
-                win.ChatraSetup.colors.clientBubbleBg != newChatraSetup.colors.clientBubbleBg ||
-                win.ChatraSetup.colors.agentBubbleBg != newChatraSetup.colors.agentBubbleBg
+                window.ChatraSetup.colors.chatBg != newChatraSetup.colors.chatBg ||
+                window.ChatraSetup.colors.clientBubbleBg != newChatraSetup.colors.clientBubbleBg ||
+                window.ChatraSetup.colors.agentBubbleBg != newChatraSetup.colors.agentBubbleBg
             ) {
                 Chatra('setColors', newChatraSetup.colors);
                 chatWindowChanged = true;
@@ -122,10 +122,9 @@
             if (chatButtonChanged && !chatWindowChanged && Chatra._chatExpanded) Chatra('minimizeWidget');
             else if (chatWindowChanged && !chatButtonChanged && !Chatra._chatExpanded) Chatra('expandWidget');
 
-            win.ChatraSetup = newChatraSetup;
+            window.ChatraSetup = newChatraSetup;
         }
     };
 
     initialize(INSTALL_OPTIONS);
-
-})(document, window);
+})();
