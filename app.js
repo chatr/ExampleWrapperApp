@@ -1,7 +1,5 @@
 (function() {
     function convertOptions(options) {
-        console.info(options);
-
         if (!options.button) options.button = {};
         if (!options.window) options.window = {};
         if (!options.advanced) options.advanced = {};
@@ -50,8 +48,6 @@
 
     window.INSTALL_SCOPE.setOptions = function(options) {
         var newChatraSetup = convertOptions(options);
-
-        console.info(newChatraSetup);
 
         if (!options.account || options.account.userId != window.ChatraID) {
             window.ChatraID = options.account && options.account.userId;
