@@ -1,4 +1,7 @@
 (function() {
+    var demoChatraId = INSTALL_ID == 'preview'? 'hX8ihkAcyHK93ue99': void 0;
+    var currentChatraId;
+
     function convertOptions(options) {
         if (!options.button) options.button = {};
         if (!options.window) options.window = {};
@@ -32,9 +35,12 @@
     }
 
     function initialize(options) {
+        var chatraId = (options.account || {}).userId;
+
         window.ChatraSetup = convertOptions(options);
 
-        window.ChatraID = options.account && options.account.userId;
+        currentChatraId = chatraId;
+        window.ChatraID = chatraId || demoChatraId;
         window.ChatraProtocol = 'https:';
 
         var s = document.createElement('script');
@@ -48,9 +54,11 @@
 
     window.INSTALL_SCOPE.setOptions = function(options) {
         var newChatraSetup = convertOptions(options);
+        var newChatraId = (options.account || {}).userId;
 
-        if (!options.account || options.account.userId != window.ChatraID) {
-            window.ChatraID = options.account && options.account.userId;
+        if (newChatraId != currentChatraId) {
+            currentChatraId = newChatraId;
+            window.ChatraID = newChatraId || demoChatraId;
             window.ChatraSetup = newChatraSetup;
             Chatra('restart');
         }

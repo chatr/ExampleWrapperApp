@@ -9,21 +9,26 @@
     },
     "options": {
         "properties": {
-            "account": {
+            "accountTip": {
                 "order": 1,
+                "showIf": {
+                    "account.service": {
+                        "op": "==",
+                        "value": null
+                    }
+                },
+                "type": "help",
+                "helpvalue": "Showing demo Chatra account. Sign up or login to install Chatra."
+            },
+            "account": {
+                "order": 2,
                 "title": "Chatra Account",
                 "type": "object",
                 "format": "account",
                 "services": ["chatra"]
             },
             "button": {
-                "order": 2,
-                "showIf": {
-                    "account.service": {
-                        "op": "!=",
-                        "value": null
-                    }
-                },
+                "order": 3,
                 "title": "Chat Button",
                 "type": "object",
                 "properties": {
@@ -108,13 +113,7 @@
                 }
             },
             "window": {
-                "order": 3,
-                "showIf": {
-                    "account.service": {
-                        "op": "!=",
-                        "value": null
-                    }
-                },
+                "order": 4,
                 "title": "Chat Window",
                 "type": "object",
                 "properties": {
@@ -167,13 +166,7 @@
                 }
             },
             "advanced": {
-                "order": 4,
-                "showIf": {
-                    "account.service": {
-                        "op": "!=",
-                        "value": null
-                    }
-                },
+                "order": 5,
                 "title": "Advanced Options",
                 "type": "object",
                 "properties": {
@@ -240,7 +233,7 @@
                 }
             },
             "settingsTip": {
-                "order": 5,
+                "order": 6,
                 "showIf": {
                     "account.service": {
                         "op": "!=",
