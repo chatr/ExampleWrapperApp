@@ -18,7 +18,7 @@
                     }
                 },
                 "type": "help",
-                "helpvalue": "Showing demo Chatra account. Sign up or login to install Chatra."
+                "helpvalue": "Showing demo Chatra account. <strong>Sign up</strong> or <strong>login</strong> to see more options and install Chatra on your website."
             },
             "account": {
                 "order": 2,
@@ -29,6 +29,12 @@
             },
             "button": {
                 "order": 3,
+                "showIf": {
+                    "account.service": {
+                        "op": "!=",
+                        "value": null
+                    }
+                },
                 "title": "Chat Button",
                 "type": "object",
                 "properties": {
@@ -114,6 +120,12 @@
             },
             "window": {
                 "order": 4,
+                "showIf": {
+                    "account.service": {
+                        "op": "!=",
+                        "value": null
+                    }
+                },
                 "title": "Chat Window",
                 "type": "object",
                 "properties": {
@@ -147,7 +159,7 @@
                     "bubbleColorsTip": {
                         "order": 4,
                         "type": "help",
-                        "helpvalue": "Try sending yourself a message to check these:"
+                        "helpvalue": "Try sending a message to check these:"
                     },
                     "clientBubbleBg": {
                         "order": 5,
@@ -167,6 +179,12 @@
             },
             "advanced": {
                 "order": 5,
+                "showIf": {
+                    "account.service": {
+                        "op": "!=",
+                        "value": null
+                    }
+                },
                 "title": "Advanced Options",
                 "type": "object",
                 "properties": {

@@ -1,5 +1,8 @@
 (function() {
     var demoChatraId = INSTALL_ID == 'preview'? 'hX8ihkAcyHK93ue99': void 0;
+    var demoChatraSetup = {
+        language: 'en'
+    };
     var currentChatraId;
 
     function convertOptions(options) {
@@ -37,7 +40,7 @@
     function initialize(options) {
         var chatraId = (options.account || {}).userId;
 
-        window.ChatraSetup = convertOptions(options);
+        window.ChatraSetup = chatraId? convertOptions(options): demoChatraSetup;
 
         currentChatraId = chatraId;
         window.ChatraID = chatraId || demoChatraId;
@@ -53,8 +56,8 @@
     }
 
     window.INSTALL_SCOPE.setOptions = function(options) {
-        var newChatraSetup = convertOptions(options);
         var newChatraId = (options.account || {}).userId;
+        var newChatraSetup = newChatraId? convertOptions(options): demoChatraSetup;
 
         if (newChatraId != currentChatraId) {
             currentChatraId = newChatraId;
