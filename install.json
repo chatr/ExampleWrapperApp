@@ -270,5 +270,15 @@
                 "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
             }
         ]
-    }
+    },
+    "hooks": [
+        {
+            "endpoint": "https://app.chatra.io/cloudflare-install-check",
+            "events": ["before-new-install", "before-update-install"],
+            "block": true,
+            "failure": {
+                "action": "ignore"
+            }
+        }
+    ]
 }
