@@ -25,7 +25,8 @@
                 "title": "Chatra Account",
                 "type": "object",
                 "format": "account",
-                "services": ["chatra"]
+                "services": ["chatra"],
+                "required": true
             },
             "button": {
                 "order": 3,
