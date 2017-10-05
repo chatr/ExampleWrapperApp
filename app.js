@@ -1,11 +1,11 @@
 (function() {
     var demoChatraId = INSTALL_ID == 'preview'? 'hX8ihkAcyHK93ue99': void 0;
-    var demoChatraSetup = {
-        language: 'en'
-    };
+    var demoGroupId = INSTALL_ID == 'preview'? 'BKjdxwGNFhDE4DJ2r': void 0;
     var currentChatraId;
 
-    function convertOptions(options) {
+    function convertOptions(options, isDemo) {
+        var useChatraButtonSettings = options.button.useChatraSettings && !isDemo;
+
         if (!options.button) options.button = {};
         if (!options.window) options.window = {};
         if (!options.advanced) options.advanced = {};
@@ -16,11 +16,14 @@
             zIndex: options.advanced.zIndex !== null? options.advanced.zIndex: void 0,
             mobileOnly: options.advanced.devices == 'mob',
             disabledOnMobile: options.advanced.devices == 'notMob',
-            language: options.advanced.language || void 0,
-            groupId: options.advanced.groupId || void 0
+            language: options.advanced.language || (isDemo? 'en': void 0)
         };
 
-        if (!options.button.useChatraSettings) {
+        if (isDemo || options.advanced.groupId) {
+            result.groupId = isDemo? demoGroupId: options.advanced.groupId;
+        }
+
+        if (!useChatraButtonSettings) {
             result.buttonStyle = options.button.style || void 0;
             result.buttonSize = parseInt(options.button.size) || void 0;
             result.buttonPosition = options.button.position || void 0;
@@ -28,8 +31,8 @@
 
         result.colors = {};
 
-        if (!options.button.useChatraSettings && options.button.textColor) result.colors.buttonText = options.button.textColor;
-        if (!options.button.useChatraSettings && options.button.bgColor) result.colors.buttonBg = options.button.bgColor;
+        if (!useChatraButtonSettings && options.button.textColor) result.colors.buttonText = options.button.textColor;
+        if (!useChatraButtonSettings && options.button.bgColor) result.colors.buttonBg = options.button.bgColor;
         if (options.window.bgColor) result.colors.chatBg = options.window.bgColor;
         if (options.window.clientBubbleBg) result.colors.clientBubbleBg = options.window.clientBubbleBg;
         if (options.window.agentBubbleBg) result.colors.agentBubbleBg = options.window.agentBubbleBg;
@@ -40,7 +43,7 @@
     function initialize(options) {
         var chatraId = (options.account || {}).userId;
 
-        window.ChatraSetup = chatraId? convertOptions(options): demoChatraSetup;
+        window.ChatraSetup = convertOptions(options, !chatraId);
 
         currentChatraId = chatraId;
         window.ChatraID = chatraId || demoChatraId;
@@ -57,7 +60,7 @@
 
     window.INSTALL_SCOPE.setOptions = function(options) {
         var newChatraId = (options.account || {}).userId;
-        var newChatraSetup = newChatraId? convertOptions(options): demoChatraSetup;
+        var newChatraSetup = convertOptions(options, !newChatraId);
 
         if (newChatraId != currentChatraId) {
             currentChatraId = newChatraId;

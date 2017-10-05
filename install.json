@@ -19,7 +19,7 @@
                 },
                 "type": "help",
                 "format": "help",
-                "helpvalue": "Showing demo Chatra account. <strong>Sign up</strong> or <strong>login</strong> to see more options and install Chatra on your website."
+                "helpvalue": "Showing demo Chatra account. <strong>Sign up</strong> or <strong>login</strong> to install Chatra on your website."
             },
             "account": {
                 "order": 2,
@@ -31,12 +31,6 @@
             },
             "button": {
                 "order": 3,
-                "showIf": {
-                    "account.service": {
-                        "op": "!=",
-                        "value": null
-                    }
-                },
                 "title": "Chat Button",
                 "type": "object",
                 "properties": {
@@ -56,10 +50,7 @@
                             "rm": "Right Middle",
                             "rb": "Right Bottom"
                         },
-                        "default": "br",
-                        "showIf": {
-                            "button.useChatraSettings": false
-                        }
+                        "default": "br"
                     },
                     "style": {
                         "order": 2,
@@ -74,9 +65,6 @@
                         "enumNames": {
                             "tab": "Tab",
                             "round": "Round"
-                        },
-                        "showIf": {
-                            "button.useChatraSettings": false
                         }
                     },
                     "size": {
@@ -87,47 +75,37 @@
                         "default": 60,
                         "minimum": 40,
                         "maximum": 100,
-                        "step": 1,
-                        "showIf": {
-                            "button.style": "round",
-                            "button.useChatraSettings": false
-                        }
+                        "step": 1
                     },
                     "textColor": {
                         "order": 4,
                         "default": "#ffffff",
                         "format": "color",
                         "title": "Button Text / Icon Color",
-                        "type": "string",
-                        "showIf": {
-                            "button.useChatraSettings": false
-                        }
+                        "type": "string"
                     },
                     "bgColor": {
                         "order": 5,
                         "default": "#0d8bcd",
                         "format": "color",
                         "title": "Button Background Color",
-                        "type": "string",
-                        "showIf": {
-                            "button.useChatraSettings": false
-                        }
+                        "type": "string"
                     },
                     "useChatraSettings": {
                         "order": 6,
                         "title": "Use Chat Button settings from <a href=\"https://app.chatra.io/settings/general\" target=\"_blank\">Chatra Dashboard</a> instead",
-                        "type": "boolean"
+                        "type": "boolean",
+                        "showIf": {
+                            "account.service": {
+                                "op": "!=",
+                                "value": null
+                            }
+                        }
                     }
                 }
             },
             "window": {
                 "order": 4,
-                "showIf": {
-                    "account.service": {
-                        "op": "!=",
-                        "value": null
-                    }
-                },
                 "title": "Chat Window",
                 "type": "object",
                 "properties": {
@@ -182,12 +160,6 @@
             },
             "advanced": {
                 "order": 5,
-                "showIf": {
-                    "account.service": {
-                        "op": "!=",
-                        "value": null
-                    }
-                },
                 "title": "Advanced Options",
                 "type": "object",
                 "properties": {
@@ -248,7 +220,11 @@
                         "description": "Assign visitors to a specific <a href=\"https://app.chatra.io/settings/groups\" target=\"_blank\">group of agents</a>",
                         "type": "string",
                         "showIf": {
-                            "advanced.enabled": true
+                            "advanced.enabled": true,
+                            "account.service": {
+                                "op": "!=",
+                                "value": null
+                            }
                         }
                     }
                 }
