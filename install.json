@@ -75,7 +75,10 @@
                         "default": 60,
                         "minimum": 40,
                         "maximum": 100,
-                        "step": 1
+                        "step": 1,
+                        "showIf": {
+                            "button.style": "round"
+                        }
                     },
                     "textColor": {
                         "order": 4,
