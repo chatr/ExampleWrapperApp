@@ -18,7 +18,6 @@
                     }
                 },
                 "type": "help",
-                "format": "help",
                 "helpvalue": "Showing demo Chatra account. <strong>Sign up</strong> or <strong>login</strong> to install Chatra on your website."
             },
             "account": {
@@ -142,7 +141,6 @@
                     "bubbleColorsTip": {
                         "order": 4,
                         "type": "help",
-                        "format": "help",
                         "helpvalue": "Try sending a message to check these:"
                     },
                     "clientBubbleBg": {
@@ -241,7 +239,6 @@
                     }
                 },
                 "type": "help",
-                "format": "help",
                 "helpvalue": "Looking for more options? Check out your <a href=\"https://app.chatra.io/settings/general\" target=\"_blank\">Chatra Settings</a>"
             }
         }
