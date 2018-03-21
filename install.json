@@ -131,28 +131,21 @@
                         "maximum": 600,
                         "step": 1
                     },
-                    "bgColor": {
-                        "order": 3,
-                        "default": "#fbfafd",
-                        "format": "color",
-                        "title": "Window Background Color",
-                        "type": "string"
-                    },
                     "bubbleColorsTip": {
-                        "order": 4,
+                        "order": 3,
                         "type": "help",
                         "helpvalue": "Try sending a message to check these:"
                     },
                     "clientBubbleBg": {
-                        "order": 5,
+                        "order": 4,
                         "default": "#d4f2fc",
                         "format": "color",
                         "title": "Visitor’s Message Bubble Color",
                         "type": "string"
                     },
                     "agentBubbleBg": {
-                        "order": 6,
                         "default": "#f1f0f3",
+                        "order": 5,
                         "format": "color",
                         "title": "Agent’s Message Bubble Color",
                         "type": "string"
