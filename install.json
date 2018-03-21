@@ -144,7 +144,7 @@
                         "type": "string"
                     },
                     "agentBubbleBg": {
-                        "default": "#f1f0f3",
+                        "default": "#f1f3f5",
                         "order": 5,
                         "format": "color",
                         "title": "Agent’s Message Bubble Color",
