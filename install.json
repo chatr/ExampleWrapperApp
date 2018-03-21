@@ -202,8 +202,8 @@
                         "title": "Z-index of the widget",
                         "description": "Increase this value if other elements overlap the widget",
                         "type": "integer",
-                        "default": 9999,
-                        "placeholder": 9999,
+                        "default": 1000000,
+                        "placeholder": 1000000,
                         "showIf": {
                             "advanced.enabled": true
                         }
