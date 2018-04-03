@@ -116,7 +116,7 @@
                         "title": "Window Width",
                         "type": "integer",
                         "format": "slider",
-                        "default": 340,
+                        "default": 380,
                         "minimum": 275,
                         "maximum": 500,
                         "step": 1
@@ -126,9 +126,9 @@
                         "title": "Window Height",
                         "type": "integer",
                         "format": "slider",
-                        "default": 480,
+                        "default": 600,
                         "minimum": 350,
-                        "maximum": 600,
+                        "maximum": 700,
                         "step": 1
                     },
                     "bubbleColorsTip": {
